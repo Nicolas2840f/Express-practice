@@ -1,0 +1,1 @@
+.form{width:30%;text-align:center;display:grid;justify-content:center}.box{box-sizing:border-box;width:100%;margin:10px 0}.like input{display:none}.like span{display:inline-block;width:20px;height:20px;background-size:cover;background-image:url(images/126473.png);cursor:pointer}.like input:checked+span{background-image:url(images/686339.png)}

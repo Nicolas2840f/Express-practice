@@ -34,4 +34,25 @@ blogRouter.post("/", (request, response,next) => {
   .catch(error => next(error));
 });
 
+blogRouter.put("/:id", (request, response, next) => {
+  const body = request.body;
+  const updatedBlog = {
+    title: body.title,
+    author: body.author,
+    url: body.url,
+    likes: body.likes + 1
+  };
+
+
+  Blog.findByIdAndUpdate(request.params.id, updatedBlog,{new:true,runValidators:true,context:'query'})
+    .then((updatedBlog) => {
+      if (updatedBlog) {
+        response.json(updatedBlog);
+      } else {
+        response.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = blogRouter
